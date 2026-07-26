@@ -30,13 +30,16 @@ deliberate decision.
 - Any interval flagged with a market intervention indicator is excluded from headline results and
   noted separately.
 
-## Data sourcing tasks to do at the start of the build (not yet resolved, do this first)
-1. Pull specific low/central/high degradation cost figures (CSIRO GenCost, BloombergNEF, or
-   similar public grid-scale lithium-ion cost benchmark).
-2. Pull Hornsdale Power Reserve published revenue-per-MW / cycles-per-year figures as the
-   benchmark comparison target.
-3. Confirm access route for 5-minute AEMO dispatch price data for SA, 2024 (MMSDM Historical Data
-   SQLLoader directly, or via NEMOSIS / nem-data Python packages).
+## How to work
+Read TASKS.md for the full build sequence. It is the authoritative execution guide, organised
+into phases with explicit done conditions for each task. Always check the current phase and the
+next unchecked task before starting any work. Mark tasks as done by changing [ ] to [x] as they
+are completed. Do not jump ahead to a later phase until the current phase's done condition is met.
+
+When a task produces a result that requires interpretation or a decision before proceeding (e.g.
+degradation cost figures sourced in P0.1, unexpected data quality findings in Phase 1, smoke test
+results in P2.5), pause and surface the finding clearly so it can be reviewed in the Claude
+Project before continuing. Do not silently proceed past a decision point.
 
 ## Repo structure (target)
 ```
@@ -55,3 +58,4 @@ optimisation) but new to Pyomo specifically and to the NEM market structure. Exp
 syntax choices briefly where non-obvious. Do not over-explain general MILP/optimisation concepts he
 already knows. Flag clearly if a request would pull in V2-scope work (FCAS, ML, multi-year) so it
 can be deferred deliberately rather than absorbed silently.
+
